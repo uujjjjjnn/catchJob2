@@ -1,0 +1,103 @@
+.searchContainer {
+  padding-top: 70px;
+  margin: 0 auto;
+  width: 1200px;
+  min-height: 66vh;
+}
+
+.searchResultMsg {
+  font-size: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.none {
+  min-height: 53vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+
+.portfolioWrapper {
+  min-height: 35vh;
+  margin-bottom: 50px;
+}
+
+.portfolioTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.searchNum {
+  color: #e2432e;
+}
+
+.portfolioSearchResults {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.studyItem,
+.boardItem {
+  height: 150px;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  cursor: pointer;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  padding: 30px;
+}
+
+.boardItem {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.coverImg img {
+  width: 70px;
+  height: 70px;
+}
+
+.boardElement {
+  font-weight: 600;
+  font-size: 18px;
+  display: inline-flex;
+  flex-direction: column;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  gap: 20px;
+}
+
+.itemElement {
+  font-weight: 600;
+  font-size: 18px;
+  display: inline-flex;
+  flex-direction: column;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+}
+
+.itemEleTitle {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 35px;
+}
+
+.boardElement p,
+.itemElement p {
+  /* height: ; */
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+.studyItem {
+  display: flex;
+}

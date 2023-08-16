@@ -1,0 +1,214 @@
+.studyWrapper {
+  width: 1200px;
+  position: relative;
+  margin: 0 auto;
+  /* margin-bottom: 100px; */
+  min-height: calc(100vh - 390px);
+  /* padding-bottom: 200px; */
+}
+
+.studyPage {
+  width: 1200px;
+  position: relative;
+  margin-top: 100px;
+}
+
+.makeProject {
+  position: absolute;
+  /* bottom: 0; */
+  width: 145px;
+  height: 65px;
+  z-index: 98;
+  border-radius: 32px;
+  background-color: #e2432e;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.makeProject:hover {
+  opacity: 1;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkIcon {
+  margin-right: 10px;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.invisible {
+  color: white;
+}
+
+.popular {
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.new {
+  cursor: pointer;
+}
+
+.showSelected {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 7px;
+}
+
+.selected {
+  border: none;
+}
+
+.studyGridView {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 60px;
+  position: relative;
+  /* min-height: 40vh; */
+}
+
+.studyGridElement {
+  /* width: 255px; */
+  height: 150px;
+  border-radius: 8px;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+}
+
+.type {
+  position: absolute;
+}
+
+.typeWord {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  color: #444;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  transform: translate(-50%, -50%);
+}
+
+.heart {
+  position: absolute;
+  right: 16px;
+  top: 10px;
+}
+
+.heart path:hover {
+  stroke: rgba(237, 62, 62, 1);
+}
+
+.heartActive {
+  fill: red;
+}
+
+.subject {
+  height: 23px;
+  margin: 37px 16px 17px;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}
+
+.tagsWrap {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  gap: 7px;
+  margin-left: 16px;
+}
+
+.tag {
+  border-radius: 100px;
+  height: 15px;
+  font-size: 8px;
+  width: 50px;
+  color: #fff;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag1 {
+  background-color: rgba(229, 137, 137, 0.45);
+}
+
+.tag2 {
+  background-color: rgba(177, 191, 119, 0.45);
+}
+.tag3 {
+  background-color: rgba(133, 187, 226, 0.45);
+}
+
+.countHeart {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.heartRate {
+  color: #888;
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 5px;
+  line-height: 18px;
+}
+
+.people {
+  border-top: 0.5px solid #f6f6f6;
+  padding-top: 3px;
+  margin: 3px 13px;
+  color: #666;
+  font-family: Noto Sans KR;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gridViewWrapper {
+  /* height: 1000px; */
+  margin-bottom: 100px;
+}
+
+.makeProjectBtnWrapper {
+  position: sticky;
+  bottom: 10%;
+  display: flex;
+  justify-content: flex-end;
+}

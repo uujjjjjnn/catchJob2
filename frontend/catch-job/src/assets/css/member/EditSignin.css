@@ -1,0 +1,160 @@
+.body-edit{
+  background:#F9FAFB;
+  font-family: 'Inter';
+  display:grid;
+  place-content: center;
+  position: relative;
+}
+.section-edit {
+  width: 640px;
+  height: 700px; 
+  border-radius: 32px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: scroll; 
+  margin: 40px 0 150px 0;
+}
+
+.entire-box-edit{
+  display: flex;
+  padding: 0px 2px 0px 2px;
+  margin-top: 50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 332px;
+  height: 800px;
+}
+
+.catchJob-edit{
+
+  color: #000;
+  text-align: center;
+  font-size: 46px;
+  font-weight: bold;
+  position: fixed;
+  top: 60px;
+}
+
+.catchJob-edit .red-letter{
+  color:#E2432E;
+  font-size: 56px;
+}
+
+.edit-inform{
+  margin-bottom: 50px;
+}
+
+.personDate{
+  position: relative;
+  justify-content: center;
+  right:80px;
+}
+
+.input-text-edit{
+  height: 30px;
+  color: #0D0D0D;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 10px auto 0 5px;
+}
+
+.input-box-edit{
+  position: fixed;
+  display: flex;
+  left: 330px;
+  width: 100px;
+  margin-left: 20px;
+}
+
+.enrollbutton-edit{
+  display: flex;
+  align-items: center; 
+  margin-top:50px; 
+}
+
+.cancel-edit{
+  display: flex;
+  width: 75px;
+  height: 44px;
+  padding: 9.81px 2px 9.19px 3px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #FFF;
+  font-weight: bold;
+  margin: 0px 30px 10px 30px;
+  font-size: 14px;
+}
+
+.cancel-edit:active {
+  background-color: #ffffff;
+  border: none;
+  color: #ffffff;
+}
+
+.enroll-edit{
+  display: flex;
+  width: 75px;
+  height: 44px;
+  padding: 9.81px 2px 9.19px 3px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: none;
+  background: #E2432E;
+  font-weight: bold;
+  color:#FFF;
+  margin: 0px 30px 10px 30px;
+  font-size: 14px;
+}
+
+.enroll-edit:active{
+  background-color: #ffffff;
+  border: none;
+}
+
+.profile-image-container {
+  position: relative;
+  margin-bottom: 50px; 
+}
+
+.profile-image {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 100px; 
+  height: 100px; 
+  border:1px solid #b2b2b2;
+  cursor: pointer; 
+}
+
+.upload-profile-img{
+  display: flex;
+  position: absolute;
+  border-radius: 50%;
+  width: 30px; 
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  background-color: #444444;
+  top:70px;
+  left:70px;
+  cursor: pointer; 
+}
+
+.upload-profile-pencil{
+  color: #ffffff;
+}

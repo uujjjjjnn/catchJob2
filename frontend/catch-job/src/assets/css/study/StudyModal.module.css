@@ -1,0 +1,145 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  /* height: 100%; */
+}
+
+.modalContent {
+  max-width: 700px;
+  max-height: 500px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 670px;
+  min-height: 500px;
+}
+
+.modalContentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 32px;
+  gap: 30px;
+  overflow-y: auto;
+  /* overflow: */
+  /* max-height: calc(100vh - 100px); */
+}
+
+.modalHeader {
+  font-size: 56px;
+  font-weight: 600;
+}
+
+.modalTextArea {
+  border: 2px solid #e2432e;
+  border-radius: 8px;
+  resize: none;
+  padding: 10px 0 0 20px;
+}
+
+.modalBtnWrapper {
+  display: flex;
+  gap: 100px;
+}
+
+.modalBtnWrapper button {
+  width: 75px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid black;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.modalBtnWrapper button:nth-child(2) {
+  background-color: #e2432e;
+  border: none;
+  color: #fff;
+}
+
+.applyListWrapper {
+  overflow-y: auto;
+  /* overflow: */
+  /* max-height: calc(100vh - 230px);
+  border: 1px solid blue; */
+}
+
+.applyList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #e2432e;
+  border-radius: 8px;
+  width: 600px;
+  padding: 20px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.applyName {
+  font-weight: 600;
+}
+.applyEmail {
+  font-weight: 600;
+}
+
+.reasonBtn {
+  max-height: 2rem;
+  line-height: 2rem;
+  &.hide {
+    display: none;
+  }
+}
+.applyReasonExpanded {
+  max-height: none;
+}
+
+.applyReason {
+  max-width: 200px;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1; */
+  font-size: 12px;
+  line-height: 16px;
+  color: #333;
+  /* display: -webkit-box; */
+  /* -webkit-box-orient: vertical; */
+  font-weight: 400;
+  word-break: break-all;
+}
+
+.reasonWrapper {
+  position: relative;
+  max-width: 200px;
+  overflow: auto;
+}
+
+.reasonWrapper .reasonBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-height: 2rem;
+  line-height: 2rem;
+  display: none;
+}
+
+.reasonWrapper:hover .reasonBtn {
+  display: inline-block;
+}
