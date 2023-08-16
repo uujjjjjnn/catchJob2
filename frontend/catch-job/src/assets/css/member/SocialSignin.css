@@ -1,0 +1,137 @@
+.signInPage {
+  background: #f9fafb;
+  width: 100%;
+  height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signIn {
+  width: 640px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  background: #fff;
+  border-radius: 32px;
+}
+
+.catchJob-social {
+  color: #000;
+  text-align: center;
+  font-size: 46px;
+  font-weight: bold;
+  padding-top: 70px;
+}
+
+.catchJob-social .red-letter {
+  color: #e2432e;
+  font-size: 56px;
+}
+
+.hi-text {
+  color: #0d0d0d;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.social-buttons-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.button {
+  display: flex;
+  width: 342px;
+  border-radius: 4px;
+  height: 50px;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#kakao-button {
+  /* position: fixed; */
+  top: 450px;
+  background: #f9da49;
+}
+
+#google-button {
+  /* position: fixed; */
+  top: 510px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+}
+
+#basic-button {
+  /* position: fixed; */
+  top: 570px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+}
+
+#kakao-button:active {
+  background-color: #ffffff;
+}
+
+#google-button:active {
+  background-color: #ffffff;
+  border: none;
+}
+
+#basic-button:active {
+  background-color: #ffffff;
+  border: none;
+}
+
+.button-icon-kakao {
+  width: 24px;
+  height: 24px;
+  background: url("../../img/ico-kakao.png"), 0px 0px / 100% 100% no-repeat;
+  margin-right: 10px;
+}
+
+.button-icon-google {
+  width: 24px;
+  height: 24px;
+  background: url("../../img/ico-google.png"), 0px 0px / 100% 100% no-repeat;
+  margin-right: 10px;
+}
+
+.button-text {
+  color: #000;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.entire-text-social {
+  color: #444444;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.log-in {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 40px;
+  /* position: fixed; */
+  top: 720px;
+}
+
+.log-in-now {
+  color: #0d0d0d;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration-line: underline;
+  background: none;
+  border: none;
+}
+.log-in-now:active {
+  color: #ffffff;
+}

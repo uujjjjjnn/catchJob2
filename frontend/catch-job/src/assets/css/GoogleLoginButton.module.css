@@ -1,0 +1,12 @@
+.google_login_box{
+  border: none;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: url("../img/GoogleButton.png"), 12px 12px / 50% 50% no-repeat, #f8f9fd;
+}
+
+.google_login_box:active{
+  background: #ffffff;
+}

@@ -1,0 +1,138 @@
+.port_wrapper {
+  font-family: "Inter";
+  width: 1200px;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  min-height: calc(100vh - 390px);
+}
+
+.port_page {
+  width: 1200px;
+  position: relative;
+  margin-top: 100px;
+}
+
+.port_checkIcon {
+  margin-right: 10px;
+}
+
+.port_btn {
+  cursor: pointer;
+}
+
+.port_invisible {
+  display: none;
+}
+
+.port_topRated {
+  margin-right: 30px;
+}
+
+.port_GridView {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 60px;
+}
+
+.img {
+  width: 350px;
+  height: 250px;
+  border-radius: 8px;
+  /* border: 1px solid #b2b2b2; */
+  cursor: pointer;
+}
+
+.user_img {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 1px solid #b2b2b2;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  height: 24px;
+  margin-top: 10px;
+}
+
+.info_left {
+  color: #161c1c;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 5px;
+  width: 200px; /* 예시로 너비를 200px로 제한함, 필요에 따라 조절 */
+  white-space: nowrap; /* 긴 title은 줄바꿈 없이 표시 */
+  text-overflow: ellipsis; /* 너비를 넘어간 내용은 생략 부호 (...)로 표시 */
+}
+
+.info_right {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* info_right를 가장 오른쪽으로 이동 */
+}
+
+.faIcon {
+  width: 20px;
+  height: 20px;
+  color: #7c8484;
+  margin: 0 5px;
+}
+
+.num {
+  color: #7c8484;
+  font-size: 20px;
+}
+
+.makeProjectBtnWrapper {
+  position: sticky;
+  bottom: 15%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.makeProject {
+  position: absolute;
+  /* bottom: 0; */
+  width: 145px;
+  height: 65px;
+  z-index: 98;
+  border-radius: 32px;
+  background-color: #e2432e;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.makeProject:hover {
+  opacity: 1;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.showSelected {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 7px;
+}

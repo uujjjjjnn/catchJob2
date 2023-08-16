@@ -1,0 +1,49 @@
+.Footer {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 50px;
+  /* border-top: 1px solid #b2b2b2; */
+  background-color: #f5f5f5;
+  transform: translateY(0%);
+}
+
+.FooterLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FooterRight {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  line-height: 1.5;
+  gap: 70px;
+  min-width: 600px;
+  padding-left: 100px;
+  /* padding-right: 50px; */
+}
+
+.Title {
+  margin-bottom: 13px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.Footer a {
+  font-size: 14px;
+}
+
+.FooterLogo {
+  font-size: 46px !important;
+  color: #444;
+  font-weight: 600;
+}
+
+.LogoJ {
+  color: #e2432e;
+  font-size: 56px !important;
+}

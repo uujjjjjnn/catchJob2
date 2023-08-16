@@ -1,0 +1,234 @@
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.buildPage {
+  width: 1200px;
+  min-height: 100vh;
+  margin: 100px auto;
+}
+
+.buildType {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 47px;
+  cursor: pointer;
+  border: 1px solid #b2b2b2;
+  border-radius: 8px;
+}
+
+.type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.type:first-child {
+  border-radius: 8px 0 0 8px;
+  /* border-right: 1px solid black; */
+}
+
+.active {
+  background-color: #e2432e !important;
+  color: #fff !important;
+}
+
+.type:last-child {
+  border-radius: 0 8px 8px 0;
+}
+/* 
+.titleWrapper {
+  margin-top: 64px;
+} */
+
+.title {
+  /* margin-top: 50px; */
+  margin-bottom: 30px;
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.titleInput {
+  width: 100%;
+  height: 48px;
+  padding: 13px 10px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.wrapper {
+  margin-top: 64px;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.select {
+  width: 120px;
+  height: 45px;
+  border: 1px solid #e2432e;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #444;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16.95px;
+  letter-spacing: -0.4px;
+}
+
+.radioBtn {
+  display: none;
+}
+
+/* YourStyles.module.css */
+
+.selects {
+  width: 150px;
+  height: 45px;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #444;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16.95px;
+  letter-spacing: -0.4px;
+}
+
+.selects option {
+  padding: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+.crewList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 가로 3개의 열 */
+  grid-template-rows: repeat(2, 1fr); /* 세로 2개의 행 */
+  gap: 10px; /* 열과 행 사이의 간격 설정 */
+  width: 80%;
+}
+
+.crewType {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 16px;
+  gap: 5px;
+}
+
+.typeName {
+  width: 100px;
+}
+
+.plusMinusBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  font-size: 20px;
+}
+
+.plusMinusBtn button {
+  border: none;
+  background-color: inherit;
+  font-size: 20px;
+}
+
+.minusBtn {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.plusBtn {
+  cursor: pointer;
+  margin-left: 10px;
+}
+.countNum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countNum input[type="number"] {
+  width: 40px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.countNum input[type="number"]:focus {
+  border: 1px solid blue;
+}
+
+.countNum span {
+  font-weight: bold;
+}
+
+.countNum input[type="number"]::-webkit-inner-spin-button,
+.countNum input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.projectTextarea {
+  padding: 15px 12px;
+  width: 1200px;
+  resize: none;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+.submitForm {
+  display: flex;
+  width: 1200px;
+  justify-content: space-between;
+}
+
+.back,
+.submit {
+  width: 45%;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #b2b2b2;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* font-family: Inter; */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 120% */
+}
+
+.submit {
+  color: #fff;
+  background-color: #e2432e;
+  border: none;
+}
