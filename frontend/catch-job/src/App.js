@@ -28,6 +28,7 @@ import SigninAlertPage from "./pages/SigninAlertPage";
 import StudyDetailPage from "./pages/study&project/StudyDetailPage";
 import PasswordCheck from "./pages/PasswordCheck";
 import SearchPage from "./pages/SearchPage";
+import MapPage from "./pages/MapPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -75,8 +76,10 @@ function App() {
         {/* <Route path="/recruit" element={<Recruit />} /> */}
         {/* <Route path="/study/*" element={<StudyRoutes />} /> */}
         <Route path="/community" element={<CommunityRoutes />} />
+        <Route path="/map" element={<MapPage />} />
         <Route path="/studyDetail/*" element={<StudyDetailPage />} />
         <Route path="/projectDetail/*" element={<StudyDetailPage />} />
+        
       </Routes>
     </div>
   );
