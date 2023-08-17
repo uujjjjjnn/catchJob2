@@ -57,7 +57,7 @@ const BasicSigninPage = () => {
     if (password !== confirmPassword) {
       return alert("비밀번호와 비밀번호 확인이 같지 않습니다.");
     }
-    // 회원가입 데이터 생성
+    // 회원가입 데이터 생성하기
     const userData = {
       email: email,
       pwd: password,
