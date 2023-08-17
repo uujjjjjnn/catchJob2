@@ -76,6 +76,9 @@ const Header = () => {
               <Link to={"/community"} className="link">
                 <li className="nav-list">커뮤니티</li>
               </Link>
+              <Link to={"/map"} className="link">
+                <li className="nav-list">맵</li>
+              </Link>
             </ul>
           </div>
         </div>
