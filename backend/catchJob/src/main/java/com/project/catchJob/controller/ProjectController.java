@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -201,5 +202,29 @@ public class ProjectController {
     	List<P_member> member = projectService.applyList(projectId, job, jwtToken);
 	    return ResponseEntity.ok().body(member);
 	}
+    
+  //======================== 채팅 ======================== 
+    
+    @GetMapping("/studyDetail/applyList/{id}/{member_id}")
+    public ResponseEntity<?> chatList(@PathVariable("id") Long projectId,
+    		@PathVariable("member_id") Long memberId,
+    		@RequestParam("job") String job,
+    		@RequestHeader("Authorization") String jwtToken) {
+    	
+    	
+    	return ResponseEntity.ok().body(null);
+    	
+    }
+    
+    @PostMapping("/studyDetail/applyList/{id}/{member_id}")
+    public ResponseEntity<?> chat(@PathVariable("id") Long projectId,
+    				 @PathVariable("member_id") Long memberId,
+    				 @RequestParam("job") String job,
+    			     @RequestHeader("Authorization") String jwtToken) {
+    	
+    	
+    	return ResponseEntity.ok().body(null);
+    	
+    }
   
 }
