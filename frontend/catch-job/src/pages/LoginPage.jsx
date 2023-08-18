@@ -101,6 +101,14 @@ const LoginPage = () => {
             <div className="login-text">로그인</div>
           </button>
 
+          <div className="entire-text">SNS로 간편하게 시작하기</div>
+          <div className="social-buttons">
+            <button className="kakao-button"></button>
+            <GoogleOAuthProvider clientId="226990065119-dh4qnntmuprddppr3hoi6umt9k99vkvb.apps.googleusercontent.com">
+              <GoogleLoginButton />
+            </GoogleOAuthProvider>
+          </div>
+
           <div className="sign-in">
             <div className="entire-text">아직 회원이 아니세요?</div>
             <Link to={"/join"} className="sign-in-now">
