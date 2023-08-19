@@ -88,7 +88,6 @@ public class MemberService {
 	        String existedPwd = existingMember.getPwd();
 	        getByCredentials(existedEmail, existedPwd, pwdEncoder);
 	        
-	        
 	        log.info("Existing user with email {} logged in", email);
 	        return existingMember;
 	    } else {
@@ -96,10 +95,11 @@ public class MemberService {
 	        Member newMember = createGoogleMember(googleDTO);
 	        Member savedMember = memberRepo.save(newMember);
 	        log.info("New user with email {} registered and logged in", email);
+	        getByCredentials(savedMember.getEmail(), savedMember.getPwd(), pwdEncoder);
+	        
 	        return savedMember;
 	    }
 	}
-
 	
 	// 구글로그인 회원가입 (구현 중)
 	public Member createGoogleMember(GoogleUserInfoDTO googleDTO) {
@@ -137,6 +137,9 @@ public class MemberService {
 	            .fileAttached(1)
 	            .mProfile(profile)
 	            .build();
+	    
+	    profile.setMember(member);
+	    member.setMProfile(profile);
 	    
 	    return member;
 	}
@@ -222,7 +225,7 @@ public class MemberService {
 				mProfileRepo.save(currentProfile);
 			}
 			Member updateMember = memberRepo.save(optAuthenticatedMember);
-			return MemberDTO.toMemberDTO(updateMember);
+			return MemberDTO.toMemberDTO(updateMember, frontFilePath);
 		} else {
 			throw new RuntimeException("다시 로그인 해주세요");
 		}
