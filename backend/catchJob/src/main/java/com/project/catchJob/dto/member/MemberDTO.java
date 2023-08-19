@@ -37,14 +37,14 @@ public class MemberDTO {
 		return num;
 	}
 	
-	public static MemberDTO toMemberDTO(Member member) {
+	public static MemberDTO toMemberDTO(Member member, String frontFilePath) {
 		
 		if(member == null) {
 			throw new IllegalArgumentException("member가 null값");
 		}
 		
 //		String url = "https://main--classy-kleicha-484f07.netlify.app/.netlify/functions/proxy/upload/";
-		String url = "http://43.202.98.45:8089/upload/";
+//		String url = "http://43.202.98.45:8089/upload/";
 //		String url = "https://43.202.98.45:8089/upload/";
 		
 		MemberDTO memberDTO = new MemberDTO();
@@ -56,7 +56,7 @@ public class MemberDTO {
 		memberDTO.setJob(member.getJob());
 		memberDTO.setHasCareer(member.getHasCareer());
 		memberDTO.setType("일반");
-		memberDTO.setMOriginalFileName(url + member.getMProfile().getMStoredFileName());
+		memberDTO.setMOriginalFileName(frontFilePath + member.getMProfile().getMStoredFileName());
 		if(member.getFileAttached() == 0) {
 			// 프로필 사진 없는 경우
 			memberDTO.setFileAttached(member.getFileAttached());
