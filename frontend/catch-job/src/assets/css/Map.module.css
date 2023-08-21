@@ -1,4 +1,73 @@
-.mapLooking{
-  width: 1500px;
-  height: 800px;
+.wrapper{
+  font-family: "Inter";
+  width: 1200px;
+  position: relative;
+  margin: 0 auto;
+  min-height: calc(100vh - 390px);
+  display: flex;
+}
+
+.mapList{
+  display: flex;
+  flex-direction: column;
+  width:400px;
+  height: 900px;
+  overflow-y: scroll;
+  border-left: 0.5px solid #b2b2b2;
+  align-items: center;
+}
+
+.searchBox{
+  margin-top: 40px;
+  width: 350px;
+  height: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  border: 2.5px solid #e2432e;
+  padding-left: 15px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput{
+  border:none;
+  font-size: 16px;
+}
+
+.searchButton{
+  color:#e2432e;
+  font-size: 20px;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+.searchList{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 50px 25px 20px 25px;
+}
+
+.searchListOne{
+  margin-bottom: 30px;
+}
+
+.searchListOneName{
+  font-size: 18px;
+  font-weight: bold;
+  color: #444444;
+}
+
+.searchListOneAddress{
+  font-size: 15px;
+  color: #828282;
+  margin-top: 10px;
+}
+
+.container{
+  height: 900px;
+  border-right: 0.5px solid #b2b2b2;
+  border-left: 0.5px solid #b2b2b2;
 }
