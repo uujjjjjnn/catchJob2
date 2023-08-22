@@ -86,18 +86,20 @@ public class MemberService {
 	        Member existingMember = memberRepo.findByEmail(email);
 	        String existedEmail = existingMember.getEmail();
 	        String existedPwd = existingMember.getPwd();
-	        getByCredentials(existedEmail, existedPwd, pwdEncoder);
+	        System.out.println("-------" + existedEmail);
+	        System.out.println("-------" + existedPwd);
+	        return getByCredentials(existedEmail, existedPwd, pwdEncoder);
 	        
-	        log.info("Existing user with email {} logged in", email);
-	        return existingMember;
+//	        log.info("Existing user with email {} logged in", email);
+//	        return existingMember;
 	    } else {
 	        // 새로운 사용자인 경우 회원 가입 처리 및 데이터베이스에 저장합니다.
 	        Member newMember = createGoogleMember(googleDTO);
 	        Member savedMember = memberRepo.save(newMember);
 	        log.info("New user with email {} registered and logged in", email);
-	        getByCredentials(savedMember.getEmail(), savedMember.getPwd(), pwdEncoder);
+	        return getByCredentials(savedMember.getEmail(), savedMember.getPwd(), pwdEncoder);
 	        
-	        return savedMember;
+//	        return savedMember;
 	    }
 	}
 	
