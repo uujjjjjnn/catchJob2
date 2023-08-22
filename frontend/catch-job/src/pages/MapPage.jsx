@@ -51,6 +51,25 @@ const MapPage = () => {
         }));
       };
 
+      const getPlaceLocation = async query => {
+        const geocoder = new window.google.maps.Geocoder();
+      
+        return new Promise((resolve, reject) => {
+          geocoder.geocode({ address: query }, (results, status) => {
+            if (status === window.google.maps.GeocoderStatus.OK) {
+              const location = {
+                lat: results[0].geometry.location.lat(),
+                lng: results[0].geometry.location.lng()
+              };
+              resolve(location);
+            } else {
+              reject(new Error("Geocode 검색에 실패하였습니다."));
+            }
+          });
+        });
+      };
+      
+
       const handleMapIdle = async () => {
         const currentMapCenter = mapRef.current.getCenter();
         const currentLocation = {
@@ -91,10 +110,21 @@ const MapPage = () => {
         mapRef.current = map;
     
         }, [])
-
-        const handleSearch = () => {
-            console.log("hi")
-        }
+        const handleSearch = async () => {
+            try {
+              const searchedLocation = await getPlaceLocation(searchWord);
+          
+              mapRef.current.panTo(searchedLocation);
+              mapRef.current.setZoom(17);
+          
+              const nearbyCafes = await searchCafesNearby(searchedLocation);
+              setCafes(nearbyCafes);
+            } catch (error) {
+              console.error(error);
+              alert("장소를 찾을 수 없습니다. 다른 검색어로 시도해주세요.");
+            }
+          };
+          
 
         const renderCafeMarkers = () => {
             return cafes.map((cafe, index) => {
@@ -128,6 +158,12 @@ const MapPage = () => {
             });
         };
 
+        const handleKeyPress = (event) => {
+            if (event.key === "Enter") {
+                handleSearch();
+            }
+          };
+
         const renderUserMarker = () => {
             if (userPosition.lat && userPosition.lng) {
             return (
@@ -157,6 +193,7 @@ const MapPage = () => {
                             className={`${styles.searchInput}`}
                             value={searchWord}
                             onChange={(e) => setSearchWord(e.target.value)}
+                            onKeyPress={handleKeyPress}
                         />
                     </div>
                     <div className={`${styles.searchList}`}>
