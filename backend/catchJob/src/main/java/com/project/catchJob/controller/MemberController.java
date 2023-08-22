@@ -124,7 +124,7 @@ public class MemberController {
 	        GoogleOAuthTokenDTO oAuthToken = googleoauth.getAccessToken(accessTokenResponse);
 	        ResponseEntity<String> userInfoRes = googleoauth.requestUserInfo(oAuthToken);
 	        GoogleUserInfoDTO googleUser = googleoauth.getUserInfo(userInfoRes);
-	        Member savedMember = memberService.signInOrSignUpWithGoogle(googleUser);
+	        MemberDTO savedMember = memberService.signInOrSignUpWithGoogle(googleUser);
 //	        Member savedMember = memberService.createGoogleMember(googleUser);
 	        
 	        return ResponseEntity.ok().body("================" + savedMember);

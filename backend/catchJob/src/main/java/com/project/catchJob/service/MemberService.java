@@ -21,6 +21,7 @@ import com.project.catchJob.exception.UnauthorizedException;
 import com.project.catchJob.repository.member.M_ProfileRepository;
 import com.project.catchJob.repository.member.MemberRepository;
 import com.project.catchJob.security.PasswordEncoder;
+import com.project.catchJob.security.TokenProvider;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +44,9 @@ public class MemberService {
 	
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private TokenProvider tokenProvider;
 	
 	@Value("${file.path}") private String filePath;
 	@Value("${front.file.path}") private String frontFilePath;
@@ -73,7 +77,7 @@ public class MemberService {
 	}
 	
 	// 구글 로그인 (구현 중)
-	public Member signInOrSignUpWithGoogle(GoogleUserInfoDTO googleDTO) {
+	public MemberDTO signInOrSignUpWithGoogle(GoogleUserInfoDTO googleDTO) {
 	    String email = googleDTO.getEmail();
 
 	    if (email == null) {
@@ -86,18 +90,47 @@ public class MemberService {
 	        Member existingMember = memberRepo.findByEmail(email);
 	        String existedEmail = existingMember.getEmail();
 	        String existedPwd = existingMember.getPwd();
-	        getByCredentials(existedEmail, existedPwd, pwdEncoder);
+	        Member loginMember = getByCredentials(existedEmail, existedPwd, pwdEncoder);
+	        System.out.println("-----" + loginMember);
+	        String token = tokenProvider.createToken(loginMember);
 	        
-	        log.info("Existing user with email {} logged in", email);
-	        return existingMember;
+	        MemberDTO memberDTO = MemberDTO.builder()
+	        		.memberId(loginMember.getMemberId())
+	        		.name(loginMember.getName())
+	        		.email(loginMember.getEmail())
+	        		.pwd(pwdEncoder.encrypt(loginMember.getEmail(), loginMember.getPwd()))
+	        		.job(loginMember.getJob())
+	        		.hasCareer(loginMember.getHasCareer())
+	        		.mOriginalFileName(loginMember.getMProfile().getMStoredFileName())
+	        		.token(token)
+	        		.build();
+	        
+	        return memberDTO;
+	        
+//	        log.info("Existing user with email {} logged in", email);
+//	        return existingMember;
 	    } else {
 	        // 새로운 사용자인 경우 회원 가입 처리 및 데이터베이스에 저장합니다.
 	        Member newMember = createGoogleMember(googleDTO);
 	        Member savedMember = memberRepo.save(newMember);
 	        log.info("New user with email {} registered and logged in", email);
-	        getByCredentials(savedMember.getEmail(), savedMember.getPwd(), pwdEncoder);
+	        Member loginMember = getByCredentials(savedMember.getEmail(), savedMember.getPwd(), pwdEncoder);
+	        String token = tokenProvider.createToken(loginMember);
 	        
-	        return savedMember;
+	        MemberDTO memberDTO = MemberDTO.builder()
+	        		.memberId(loginMember.getMemberId())
+	        		.name(loginMember.getName())
+	        		.email(loginMember.getEmail())
+	        		.pwd(pwdEncoder.encrypt(loginMember.getEmail(), loginMember.getPwd()))
+	        		.job(loginMember.getJob())
+	        		.hasCareer(loginMember.getHasCareer())
+	        		.mOriginalFileName(loginMember.getMProfile().getMStoredFileName())
+	        		.token(token)
+	        		.build();
+	        
+	        return memberDTO;
+	        
+//	        return savedMember;
 	    }
 	}
 	
