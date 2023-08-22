@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import nowMarker from "../assets/img/nowMarker.png";
 import destination from "../assets/img/dest.png";
+import axios from "axios";
 
 
 const containerStyle = {
@@ -30,24 +31,24 @@ const MapPage = () => {
 
 
     const searchCafesNearby = async (location) => {
-        const url = new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json");
+        const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
       
-        url.searchParams.set("location", `${location.lat},${location.lng}`);
-        url.searchParams.set("radius", 1000); 
-        url.searchParams.set("type", "카페");
-        url.searchParams.set("keyword", "스터디 카페");
-        url.searchParams.set("key", "AIzaSyDyCBaHuD_xiJCzf_EH1Q_0R5WRaiA0LiM");
+        const response = await axios.get(url, {
+          params: {
+            location: `${location.lat},${location.lng}`,
+            radius: 1000,
+            type: "카페",
+            keyword: "스터디 카페",
+            key: "AIzaSyDyCBaHuD_xiJCzf_EH1Q_0R5WRaiA0LiM",
+          },
+        });
       
-        const response = await fetch(url.href);
-        const data = await response.json();
-      
-        return data.results.map((result) => ({
-            lat: result.geometry.location.lat,
-            lng: result.geometry.location.lng,
-            name: result.name,
-            address: result.vicinity,
+        return response.data.results.map((result) => ({
+          lat: result.geometry.location.lat,
+          lng: result.geometry.location.lng,
+          name: result.name,
+          address: result.vicinity,
         }));
-        
       };
 
       const handleMapIdle = async () => {
