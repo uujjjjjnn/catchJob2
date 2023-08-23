@@ -1,8 +1,12 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import Style from "../assets/css/GoogleLoginButton_long.module.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const GoogleLoginButton_long = () => {
+  const navigate = useNavigate();
+
   const googleSocialLogin = useGoogleLogin({
     onSuccess: (codeResponse) => {
       console.log("=========codeResponse=============", codeResponse);
@@ -11,6 +15,11 @@ const GoogleLoginButton_long = () => {
         .then((response) => {
           // 서버 응답 처리
           console.log("============data==========", response.data);
+          const token = response.data.jwtToken;
+          localStorage.setItem("token", token); // JWT 토큰을 localStorage에 저장
+          console.log("aaa --------------------", token);
+          console.log("JWT 토큰이 저장되었습니다.");
+          navigate("/realmypage");
         })
         .catch((error) => {
           // 오류 처리
