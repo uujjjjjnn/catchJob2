@@ -89,22 +89,22 @@ public class MemberService {
 	        // 이미 존재하는 사용자인 경우 로그인 처리를 수행합니다.
 	        Member existingMember = memberRepo.findByEmail(email);
 	        String existedEmail = existingMember.getEmail();
-	        String existedPwd = existingMember.getPwd();
+//	        String existedPwd = existingMember.getPwd();
+	        String existedPwd = googleDTO.getId();
 	        Member loginMember = getByCredentials(existedEmail, existedPwd, pwdEncoder);
-	        System.out.println("-----" + loginMember);
 	        String token = tokenProvider.createToken(loginMember);
-	        
+
 	        MemberDTO memberDTO = MemberDTO.builder()
 	        		.memberId(loginMember.getMemberId())
 	        		.name(loginMember.getName())
 	        		.email(loginMember.getEmail())
-	        		.pwd(pwdEncoder.encrypt(loginMember.getEmail(), loginMember.getPwd()))
+	        		.pwd(pwdEncoder.encrypt(loginMember.getEmail(), existedPwd))
 	        		.job(loginMember.getJob())
 	        		.hasCareer(loginMember.getHasCareer())
 	        		.mOriginalFileName(loginMember.getMProfile().getMStoredFileName())
 	        		.token(token)
 	        		.build();
-	        
+	        System.out.println("--------memberDTO---" + memberDTO);
 	        return memberDTO;
 	        
 //	        log.info("Existing user with email {} logged in", email);
@@ -181,7 +181,7 @@ public class MemberService {
 	public Member getByCredentials(final String email, final String pwd, final PasswordEncoder pwdEncoder) {
 		
 		final Member originMember = memberRepo.findByEmail(email);
-		// log.info("데이터베이스에서 조회한 멤버: {}", originMember);
+//		log.info("데이터베이스에서 조회한 멤버: {}", originMember);
 		// matches 메서드를 이용해서 패스워드 같은지 확인
 		if(originMember != null && pwdEncoder.matches(pwdEncoder.encrypt(email, pwd), originMember.getPwd())) {
 			return originMember;

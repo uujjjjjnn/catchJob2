@@ -127,7 +127,7 @@ public class MemberController {
 	        MemberDTO savedMember = memberService.signInOrSignUpWithGoogle(googleUser);
 //	        Member savedMember = memberService.createGoogleMember(googleUser);
 	        
-	        return ResponseEntity.ok().body("================" + savedMember);
+	        return ResponseEntity.ok().body(savedMember);
 	        
 	    } catch (JsonProcessingException e) {
 	        e.printStackTrace();
