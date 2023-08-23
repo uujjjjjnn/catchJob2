@@ -25,6 +25,7 @@ public class MemberDTO {
 	private String hasCareer;
 	private String token;
 	private String type;
+	private String state;
 	
 	private MultipartFile mProfile;
 	@JsonProperty("mOriginalFileName")
@@ -47,6 +48,13 @@ public class MemberDTO {
 //		String url = "http://43.202.98.45:8089/upload/";
 //		String url = "https://43.202.98.45:8089/upload/";
 		
+		String fileUrl;
+		if(member.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+			fileUrl = member.getMProfile().getMStoredFileName();
+		} else {
+			fileUrl = frontFilePath + member.getMProfile().getMStoredFileName();
+		}
+		
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setMemberId(member.getMemberId());
 		memberDTO.setName(member.getName());
@@ -56,7 +64,7 @@ public class MemberDTO {
 		memberDTO.setJob(member.getJob());
 		memberDTO.setHasCareer(member.getHasCareer());
 		memberDTO.setType("일반");
-		memberDTO.setMOriginalFileName(frontFilePath + member.getMProfile().getMStoredFileName());
+		memberDTO.setMOriginalFileName(fileUrl);
 		if(member.getFileAttached() == 0) {
 			// 프로필 사진 없는 경우
 			memberDTO.setFileAttached(member.getFileAttached());

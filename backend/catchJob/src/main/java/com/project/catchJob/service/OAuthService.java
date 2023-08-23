@@ -9,6 +9,7 @@ import com.project.catchJob.domain.member.GoogleOAuth;
 import com.project.catchJob.domain.member.Member;
 import com.project.catchJob.dto.member.GoogleOAuthTokenDTO;
 import com.project.catchJob.dto.member.GoogleUserInfoDTO;
+import com.project.catchJob.dto.member.MemberDTO;
 
 @Service
 public class OAuthService {
@@ -19,13 +20,13 @@ public class OAuthService {
 	@Autowired
 	private MemberService memberService;
 	
-	private Member getGoogleUserInfoDTO(String code) throws JsonProcessingException {
+	private MemberDTO getGoogleUserInfoDTO(String code) throws JsonProcessingException {
 		
 		ResponseEntity<String> accessTokenResponse = googleOauth.requestAccessToken(code);
 		GoogleOAuthTokenDTO oAuthToken = googleOauth.getAccessToken(accessTokenResponse);
 		ResponseEntity<String> userInfoRes = googleOauth.requestUserInfo(oAuthToken);
 		GoogleUserInfoDTO googleUser = googleOauth.getUserInfo(userInfoRes);
-		Member member = memberService.createGoogleMember(googleUser);
+		MemberDTO member = memberService.signInOrSignUpWithGoogle(googleUser);
 		return member;
 	}
 	
