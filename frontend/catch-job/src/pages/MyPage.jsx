@@ -7,12 +7,12 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState(localStorage.getItem("email"));
+  const [name, setName] = useState(localStorage.getItem("name"));
   const [password, setPassword] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectedCarrers, setSelectedCarrers] = useState("");
-  const [imageFile, setImageFile] = useState(null);
+  const [imageFile, setImageFile] = useState(localStorage.getItem("profileImg"));
   const [imageFileName, setImageFileName] = useState("");
   const navigate = useNavigate();
 
