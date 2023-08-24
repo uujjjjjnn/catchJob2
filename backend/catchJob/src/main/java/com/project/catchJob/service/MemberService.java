@@ -76,7 +76,7 @@ public class MemberService {
 		return memberRepo.save(member);
 	}
 	
-	// 구글 로그인 (구현 중)
+	// 구글 로그인
 	public MemberDTO signInOrSignUpWithGoogle(GoogleUserInfoDTO googleDTO) {
 	    String email = googleDTO.getEmail();
 
@@ -88,28 +88,26 @@ public class MemberService {
 	    if (memberRepo.existsByEmail(email)) {
 	        // 이미 존재하는 사용자인 경우 로그인 처리를 수행합니다.
 	        Member existingMember = memberRepo.findByEmail(email);
-	        String existedEmail = existingMember.getEmail();
-	        String existedPwd = existingMember.getPwd();
+//	        String existedEmail = existingMember.getEmail();
+//	        String existedPwd = existingMember.getPwd();
 //	        String existedPwd = googleDTO.getId();
-	        Member loginMember = getByCredentials(existedEmail, existedPwd, pwdEncoder);
-	        String token = tokenProvider.createToken(loginMember);
+//	        Member loginMember = getByCredentials(existedEmail, existedPwd, pwdEncoder);
+	        String token = tokenProvider.createToken(existingMember);
 
 	        MemberDTO memberDTO = MemberDTO.builder()
-	        		.memberId(loginMember.getMemberId())
-	        		.name(loginMember.getName())
-	        		.email(loginMember.getEmail())
-	        		.pwd(pwdEncoder.encrypt(loginMember.getEmail(), existedPwd))
-	        		.job(loginMember.getJob())
-	        		.hasCareer(loginMember.getHasCareer())
+	        		.memberId(existingMember.getMemberId())
+	        		.name(existingMember.getName())
+	        		.email(existingMember.getEmail())
+	        		.pwd(existingMember.getPwd())
+	        		.job(existingMember.getJob())
+	        		.hasCareer(existingMember.getHasCareer())
 	        		.state("old")
-	        		.mOriginalFileName(loginMember.getMProfile().getMStoredFileName())
+	        		.mOriginalFileName(existingMember.getMProfile().getMStoredFileName())
 	        		.token(token)
 	        		.build();
 	        System.out.println("--------memberDTO---" + memberDTO);
 	        return memberDTO;
 	        
-//	        log.info("Existing user with email {} logged in", email);
-//	        return existingMember;
 	    } else {
 	        // 새로운 사용자인 경우 회원 가입 처리 및 데이터베이스에 저장합니다.
 	        Member newMember = createGoogleMember(googleDTO);

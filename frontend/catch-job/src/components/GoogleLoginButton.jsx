@@ -20,19 +20,24 @@ const GoogleLoginButton = () => {
         .then((response) => {
           console.log("============data==========", response.data);
           const token = response.data.token;
-          localStorage.setItem("token", token); // JWT 토큰을 localStorage에 저장
+          localStorage.setItem("token", token); // JWT 토큰을 localStorage에 저장하기
           localStorage.setItem('email', response.data.email);
           localStorage.setItem('name', response.data.name);
           localStorage.setItem('profileImg',response.data.mOriginalFileName);
-          console.log("aaa --------------------", token);
+          console.log("aaa ——————————", token);
           console.log("JWT 토큰이 저장되었습니다.");
+          console.log(localStorage.getItem("token"))
+          console.log(localStorage.getItem("email"))
+          console.log(localStorage.getItem("name"))
+
 
           if (response.data.state === 'new') {
             navigate("/realmypage");
           } else {
             navigate("/");
+            window.location.reload();
           }
-       
+      
         })
         .catch((error) => {
           console.error(error);
