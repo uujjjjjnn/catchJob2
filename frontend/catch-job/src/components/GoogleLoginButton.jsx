@@ -11,6 +11,7 @@ const GoogleLoginButton = () => {
     onSuccess: (codeResponse) => {
       console.log("-----------", codeResponse.code);
       axios
+        // .post("http://ec2-43-202-98-45.ap-northeast-2.compute.amazonaws.com:8089/googlelogin", null, {
         .post("http://43.202.98.45:8089/googlelogin", null, {
           params: {
             code: codeResponse.code,
