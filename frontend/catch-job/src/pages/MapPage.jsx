@@ -31,8 +31,9 @@ const MapPage = () => {
 
 
     const searchCafesNearby = async (location) => {
-        const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
-      
+      const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
+    
+      try {
         const response = await axios.get(url, {
           params: {
             location: `${location.lat},${location.lng}`,
@@ -42,14 +43,22 @@ const MapPage = () => {
             key: "AIzaSyDyCBaHuD_xiJCzf_EH1Q_0R5WRaiA0LiM",
           },
         });
-      
+        console.log("axios 정상");
+    
         return response.data.results.map((result) => ({
           lat: result.geometry.location.lat,
           lng: result.geometry.location.lng,
           name: result.name,
           address: result.vicinity,
         }));
-      };
+        
+      } catch (error) {
+        console.error("axios에러:", error);
+        throw error;
+      }
+    };
+    
+    
 
       const getPlaceLocation = async query => {
         const geocoder = new window.google.maps.Geocoder();
