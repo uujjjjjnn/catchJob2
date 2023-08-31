@@ -18,6 +18,10 @@ const SocialSigninPage = () => {
 
         <div className="hi-text">반가워요 👋</div>
 
+        <GoogleOAuthProvider clientId="226990065119-dh4qnntmuprddppr3hoi6umt9k99vkvb.apps.googleusercontent.com">
+            <GoogleLoginButton_long />
+          </GoogleOAuthProvider>
+
         <div className="social-buttons-social">
           <Link to={"/signin"} className="button" id="basic-button">
             <div className="button-text">이메일로 가입하기</div>
