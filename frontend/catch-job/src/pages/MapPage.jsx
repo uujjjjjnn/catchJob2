@@ -30,20 +30,16 @@ const MapPage = () => {
     const mapRef = useRef(null);
 
 
-    const searchCafesNearby = async (location) => {
-      const url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
-    
+    const searchCafesNearby = async (location) => {    
       try {
-        const response = await axios.get(url, {
+        const response = await axios.get(`http://43.202.98.45:8089/map`, {
           params: {
-            location: `${location.lat},${location.lng}`,
-            radius: 1000,
-            type: "카페",
-            keyword: "스터디 카페",
-            key: "AIzaSyDyCBaHuD_xiJCzf_EH1Q_0R5WRaiA0LiM",
+            lat: `${location.lat}`, 
+            lng: `${location.lng}`,
           },
         });
         console.log("axios 정상");
+        console.log(response.data)
     
         return response.data.results.map((result) => ({
           lat: result.geometry.location.lat,
@@ -58,8 +54,6 @@ const MapPage = () => {
       }
     };
     
-    
-
       const getPlaceLocation = async query => {
         const geocoder = new window.google.maps.Geocoder();
       

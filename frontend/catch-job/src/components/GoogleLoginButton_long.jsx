@@ -9,29 +9,38 @@ const GoogleLoginButton_long = () => {
 
   const googleSocialLogin = useGoogleLogin({
     onSuccess: (codeResponse) => {
-      console.log("=========codeResponse=============", codeResponse);
+      console.log("-----------", codeResponse.code);
       axios
-        .post("http://43.202.98.45:8089/googlelogin", { code: codeResponse.code })
+        .post("http://43.202.98.45:8089/googlelogin", null, {
+          params: {
+            code: codeResponse.code,
+            grant_type: "authorization_code",
+          },
+        })
         .then((response) => {
-          // 서버 응답 처리
           console.log("============data==========", response.data);
           const token = response.data.token;
-          localStorage.setItem("token", token); // JWT 토큰을 localStorage에 저장
+          localStorage.setItem("token", token); // JWT 토큰을 localStorage에 저장하기
           localStorage.setItem('email', response.data.email);
           localStorage.setItem('name', response.data.name);
           localStorage.setItem('profileImg',response.data.mOriginalFileName);
           console.log("aaa --------------------", token);
           console.log("JWT 토큰이 저장되었습니다.");
-          
+          console.log(localStorage.getItem("token"))
+          console.log(localStorage.getItem("email"))
+          console.log(localStorage.getItem("name"))
+
+
           if (response.data.state === 'new') {
             navigate("/realmypage");
           } else {
             navigate("/");
+            window.location.reload();
           }
+       
         })
         .catch((error) => {
-          // 오류 처리
-          console.error("-----------error------------", error);
+          console.error(error);
         });
     },
     flow: "auth-code",

@@ -103,7 +103,6 @@ const LoginPage = () => {
 
           <div className="entire-text">SNS로 간편하게 시작하기</div>
           <div className="social-buttons">
-            <button className="kakao-button"></button>
             <GoogleOAuthProvider clientId="226990065119-dh4qnntmuprddppr3hoi6umt9k99vkvb.apps.googleusercontent.com">
               <GoogleLoginButton />
             </GoogleOAuthProvider>
