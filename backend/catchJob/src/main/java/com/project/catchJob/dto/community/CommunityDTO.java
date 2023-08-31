@@ -57,22 +57,40 @@ public class CommunityDTO {
 		Member writer = community.getMember();
 		if(writer != null) {
 			
+			String fileUrl;
+			if(writer.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+				fileUrl = writer.getMProfile().getMStoredFileName();
+			} else {
+				fileUrl = frontFilePath + writer.getMProfile().getMStoredFileName();
+			}
+			
 			memberDTO = new BoardMemberDTO();
 			memberDTO.setEmail(writer.getEmail());
 			memberDTO.setName(writer.getName());
-			memberDTO.setMOriginalFileName(frontFilePath + writer.getMProfile().getMStoredFileName());
+			memberDTO.setMOriginalFileName(fileUrl);
 		}
 		
 		List<C_commentsDTO> comments = community.getCommunityCommentsList() != null ? community.getCommunityCommentsList()
 				.stream()
-				.map(comment -> C_commentsDTO.builder()
+				.map(comment -> {
+				
+					Member commentMember = comment.getMember();
+		            String fileUrl;
+		            if(commentMember.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+		                fileUrl = commentMember.getMProfile().getMStoredFileName();
+		            } else {
+		                fileUrl = frontFilePath + commentMember.getMProfile().getMStoredFileName();
+		            }
+				
+				return C_commentsDTO.builder()
 						.commentId(comment.getCComId())
 						.ccommentContent(comment.getCComcontent())
 						.commentDate(comment.getCComDate())
 						.memberName(comment.getMember().getName())
 						.memberEmail(comment.getMember().getEmail())
-						.memberProfile(frontFilePath + comment.getMember().getMProfile().getMStoredFileName())
-						.build())
+						.memberProfile(fileUrl)
+						.build();
+				})
 				.collect(Collectors.toList()) : new ArrayList<>();
 				
 		boolean isLike = communityService.isUserLiked(member.getEmail(), community.getCommunityId());
@@ -98,22 +116,40 @@ public class CommunityDTO {
 		Member writer = community.getMember();
 		if(writer != null) {
 			
+			String fileUrl;
+			if(writer.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+				fileUrl = writer.getMProfile().getMStoredFileName();
+			} else {
+				fileUrl = frontFilePath + writer.getMProfile().getMStoredFileName();
+			}
+			
 			memberDTO = new BoardMemberDTO();
 			memberDTO.setEmail(writer.getEmail());
 			memberDTO.setName(writer.getName());
-			memberDTO.setMOriginalFileName(frontFilePath + writer.getMProfile().getMStoredFileName());
+			memberDTO.setMOriginalFileName(fileUrl);
 		}
 		
 		List<C_commentsDTO> comments = community.getCommunityCommentsList() != null ? community.getCommunityCommentsList()
 				.stream()
-				.map(comment -> C_commentsDTO.builder()
+				.map(comment -> {
+				
+					Member commentMember = comment.getMember();
+		            String fileUrl;
+		            if(commentMember.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+		                fileUrl = commentMember.getMProfile().getMStoredFileName();
+		            } else {
+		                fileUrl = frontFilePath + commentMember.getMProfile().getMStoredFileName();
+		            }
+				
+				return C_commentsDTO.builder()
 						.commentId(comment.getCComId())
 						.ccommentContent(comment.getCComcontent())
 						.commentDate(comment.getCComDate())
 						.memberName(comment.getMember().getName())
 						.memberEmail(comment.getMember().getEmail())
-						.memberProfile(frontFilePath + comment.getMember().getMProfile().getMStoredFileName())
-						.build())
+						.memberProfile(fileUrl)
+						.build();
+				})
 				.collect(Collectors.toList()) : new ArrayList<>();
 			
 		int cComment = community.getCommunityCommentsList().size();

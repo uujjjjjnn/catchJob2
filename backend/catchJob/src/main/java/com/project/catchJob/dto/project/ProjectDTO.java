@@ -60,24 +60,42 @@ public class ProjectDTO {
 //		String fileUrl = "http://43.202.98.45:8089/upload/";
 //		String fileUrl = "https://43.202.98.45:8089/upload/";
 		
+		String fileUrl;
+		if(writer.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+			fileUrl = writer.getMProfile().getMStoredFileName();
+		} else {
+			fileUrl = frontFilePath + writer.getMProfile().getMStoredFileName();
+		}
+		
 		MemberInfoDTO memberDTO = MemberInfoDTO.builder()
 				.email(writer.getEmail())
 				.name(writer.getName())
 				.job(writer.getJob())
 				.hasCareer(writer.getHasCareer())
-				.mOriginalFileName(frontFilePath + writer.getMProfile().getMStoredFileName())
+				.mOriginalFileName(fileUrl)
 				.build();
 		
 		List<P_commentsDTO> comments = project.getProjectCommentsList() != null ? project.getProjectCommentsList()
 				.stream()
-				.map(comment -> P_commentsDTO.builder()
+				.map(comment -> {
+				
+					Member commentMember = comment.getMember();
+		            String profileUrl;
+		            if(commentMember.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+		            	profileUrl = commentMember.getMProfile().getMStoredFileName();
+		            } else {
+		            	profileUrl = frontFilePath + commentMember.getMProfile().getMStoredFileName();
+		            }
+				
+				return P_commentsDTO.builder()
 						.commentId(comment.getPComId())
 						.commentContent(comment.getPComContent())
 						.commentDate(comment.getPComDate())
 						.memberName(comment.getMember().getName())
 						.memberEmail(comment.getMember().getEmail())
-						.memberProfile(frontFilePath + comment.getMember().getMProfile().getMStoredFileName())
-						.build())
+						.memberProfile(profileUrl)
+						.build();
+				})
 				.collect(Collectors.toList()) : new ArrayList<>();
 		
 		List<P_memberDTO> applicants = project.getProjectMemberList() != null ? project.getProjectMemberList()
@@ -123,24 +141,42 @@ public class ProjectDTO {
 //		String fileUrl = "http://43.202.98.45:8089/upload/";
 //		String fileUrl = "https://43.202.98.45:8089/upload/";
 		
+		String fileUrl;
+		if(writer.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+			fileUrl = writer.getMProfile().getMStoredFileName();
+		} else {
+			fileUrl = frontFilePath + writer.getMProfile().getMStoredFileName();
+		}
+		
 		MemberInfoDTO memberDTO = MemberInfoDTO.builder()
 				.email(writer.getEmail())
 				.name(writer.getName())
 				.job(writer.getJob())
 				.hasCareer(writer.getHasCareer())
-				.mOriginalFileName(frontFilePath + writer.getMProfile().getMStoredFileName())
+				.mOriginalFileName(fileUrl)
 				.build();
 		
 		List<P_commentsDTO> comments = project.getProjectCommentsList() != null ? project.getProjectCommentsList()
 				.stream()
-				.map(comment -> P_commentsDTO.builder()
+				.map(comment -> {
+				
+					Member commentMember = comment.getMember();
+		            String profileUrl;
+		            if(commentMember.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+		            	profileUrl = commentMember.getMProfile().getMStoredFileName();
+		            } else {
+		            	profileUrl = frontFilePath + commentMember.getMProfile().getMStoredFileName();
+		            }
+				
+				return P_commentsDTO.builder()
 						.commentId(comment.getPComId())
 						.commentContent(comment.getPComContent())
 						.commentDate(comment.getPComDate())
 						.memberName(comment.getMember().getName())
 						.memberEmail(comment.getMember().getEmail())
-						.memberProfile(frontFilePath + comment.getMember().getMProfile().getMStoredFileName())
-						.build())
+						.memberProfile(profileUrl)
+						.build();
+				})
 				.collect(Collectors.toList()) : new ArrayList<>();
 		
 		List<P_memberDTO> applicants = project.getProjectMemberList() != null ? project.getProjectMemberList()

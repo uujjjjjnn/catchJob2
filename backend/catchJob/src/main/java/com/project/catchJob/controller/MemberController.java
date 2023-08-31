@@ -85,8 +85,14 @@ public class MemberController {
 			final String token = tokenProvider.createToken(member);
 			log.info("token 생성 성공", token);
 			
+			String profile;
+			if(member.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+				profile = member.getMProfile().getMStoredFileName();
+			} else {
+				profile = frontFilePath + member.getMProfile().getMStoredFileName();
+			}
+			
 //			String profile = "https://main--classy-kleicha-484f07.netlify.app/.netlify/functions/proxy/upload/" + member.getMProfile().getMStoredFileName();
-			String profile = frontFilePath + member.getMProfile().getMStoredFileName();
 //			String profile = "https://43.202.98.45:8089/upload/" + member.getMProfile().getMStoredFileName();
 			
 			final MemberDTO responseMemberDTO = MemberDTO.builder()
@@ -112,16 +118,16 @@ public class MemberController {
 //	@PostMapping("/login/oauth2/code/google")
 	@PostMapping("/googlelogin")
 	public ResponseEntity<?> successGoogleLogin(@RequestParam("code") String code) {
-//		return googleoauth.requestAccessToken(code);
 		ResponseEntity<String> accessTokenResponse;
 	    try {
 	        accessTokenResponse = googleoauth.requestAccessToken(code);
 	        GoogleOAuthTokenDTO oAuthToken = googleoauth.getAccessToken(accessTokenResponse);
 	        ResponseEntity<String> userInfoRes = googleoauth.requestUserInfo(oAuthToken);
 	        GoogleUserInfoDTO googleUser = googleoauth.getUserInfo(userInfoRes);
-	        Member savedMember = memberService.createGoogleMember(googleUser);
+	        MemberDTO savedMember = memberService.signInOrSignUpWithGoogle(googleUser);
+//	        Member savedMember = memberService.createGoogleMember(googleUser);
 	        
-	        return ResponseEntity.ok().body("================" + savedMember);
+	        return ResponseEntity.ok().body(savedMember);
 	        
 	    } catch (JsonProcessingException e) {
 	        e.printStackTrace();
