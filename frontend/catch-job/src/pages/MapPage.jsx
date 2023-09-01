@@ -8,6 +8,8 @@ import nowMarker from "../assets/img/nowMarker.png";
 import destination from "../assets/img/dest.png";
 import axios from "axios";
 
+const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
 
 const containerStyle = {
     width: '800px',
@@ -101,7 +103,7 @@ const MapPage = () => {
     
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyDMOgZhEGAX8Owwm1NFshuXIfWt4TpAOcQ"
+        googleMapsApiKey: googleMapsApiKey
         })
         
         const onLoad = React.useCallback(function callback(map) {
