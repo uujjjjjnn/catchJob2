@@ -35,12 +35,14 @@ function NewsPage() {
 
       console.log(response.data);
       setData(response.data);
-      dispatch(stopLoading);
+      dispatch(stopLoading());
     } catch (e) {
       console.log(e);
-      dispatch(stopLoading);
+      dispatch(stopLoading());
     } finally {
-      dispatch(stopLoading);
+      console.log(`===========` + data.items);
+      
+      dispatch(stopLoading());
     }
   };
 
@@ -89,7 +91,7 @@ function NewsPage() {
       return filteredNews;
     }, []);
   };
-  const uniqueNewsList = removeDuplicateNews(data.items);
+  const uniqueNewsList = removeDuplicateNews(data.items || []);
 
   return (
     <>

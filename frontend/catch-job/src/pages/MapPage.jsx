@@ -88,7 +88,8 @@ const MapPage = () => {
     
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyDyCBaHuD_xiJCzf_EH1Q_0R5WRaiA0LiM"
+        googleMapsApiKey: "AIzaSyDMOgZhEGAX8Owwm1NFshuXIfWt4TpAOcQ" // yj
+        // googleMapsApiKey: "AIzaSyDyCBaHuD_xiJCzf_EH1Q_0R5WRaiA0LiM" // gh
         })
 
         useEffect(() => {

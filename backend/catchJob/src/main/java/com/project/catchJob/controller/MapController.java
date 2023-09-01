@@ -16,7 +16,8 @@ public class MapController {
             "&radius=1000" +
             "&type=카페" +
             "&keyword=스터디 카페" +
-            "&key=AIzaSyDyCBaHuD_xiJCzf_EH1Q_0R5WRaiA0LiM"; // 구글 api키
+            "&key=AIzaSyDMOgZhEGAX8Owwm1NFshuXIfWt4TpAOcQ"; // 구글 api키(yj)
+//        "&key=AIzaSyDyCBaHuD_xiJCzf_EH1Q_0R5WRaiA0LiM"; // 구글 api키(gh)
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.getForEntity(uri , String.class);
