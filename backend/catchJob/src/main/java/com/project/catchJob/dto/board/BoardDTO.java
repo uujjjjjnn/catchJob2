@@ -66,7 +66,12 @@ public class BoardDTO {
 		Member writer = board.getMember();
 		if (writer != null) {
 			
-			String fileUrl = frontFilePath + writer.getMProfile().getMStoredFileName();
+			String fileUrl;
+			if(writer.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+				fileUrl = writer.getMProfile().getMStoredFileName();
+			} else {
+				fileUrl = frontFilePath + writer.getMProfile().getMStoredFileName();
+			}
 			
 		    memberDTO = new BoardMemberDTO();
 		    memberDTO.setEmail(writer.getEmail());
@@ -83,15 +88,39 @@ public class BoardDTO {
 		int bComment = board.getBoardCommentsList().size(); // 게시글에 작성된 댓글 수를 구함
 
 		List<B_commentsDTO> commentDTOList = board.getBoardCommentsList().stream()
-				.map(comment -> B_commentsDTO.builder()
-						.commentId(comment.getBComId())
-						.commentContent(comment.getBComContent())
-						.commentDate(comment.getBComDate())
-						.memberName(comment.getMember().getName())
-						.memberEmail(comment.getMember().getEmail())
-						.memberProfile(frontFilePath + comment.getMember().getMProfile().getMStoredFileName())
-						.build())
-				.collect(Collectors.toList());
+		        .map(comment -> {
+		        	
+		            Member commentMember = comment.getMember();
+		            String fileUrl;
+		            if(commentMember.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+		                fileUrl = commentMember.getMProfile().getMStoredFileName();
+		            } else {
+		                fileUrl = frontFilePath + commentMember.getMProfile().getMStoredFileName();
+		            }
+		        	
+		            return B_commentsDTO.builder()
+		                    .commentId(comment.getBComId())
+		                    .commentContent(comment.getBComContent())
+		                    .commentDate(comment.getBComDate())
+		                    .memberName(commentMember.getName())
+		                    .memberEmail(commentMember.getEmail())
+		                    .memberProfile(fileUrl)
+		                    .build();
+		        })
+		        .collect(Collectors.toList());
+
+		
+		// 정상코드
+//		List<B_commentsDTO> commentDTOList = board.getBoardCommentsList().stream()
+//				.map(comment -> B_commentsDTO.builder()
+//						.commentId(comment.getBComId())
+//						.commentContent(comment.getBComContent())
+//						.commentDate(comment.getBComDate())
+//						.memberName(comment.getMember().getName())
+//						.memberEmail(comment.getMember().getEmail())
+//						.memberProfile(frontFilePath + comment.getMember().getMProfile().getMStoredFileName())
+//						.build())
+//				.collect(Collectors.toList());
 		
 		return BoardDTO.builder()
 				.boardId(board.getBoardId())
@@ -117,7 +146,12 @@ public class BoardDTO {
 		Member member = board.getMember();
 		if (member != null) {
 			
-			String fileUrl = frontFilePath + member.getMProfile().getMStoredFileName();
+			String fileUrl;
+			if(member.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+				fileUrl = member.getMProfile().getMStoredFileName();
+			} else {
+				fileUrl = frontFilePath + member.getMProfile().getMStoredFileName();
+			}
 			
 		    memberDTO = new BoardMemberDTO();
 		    memberDTO.setEmail(member.getEmail());
@@ -130,15 +164,38 @@ public class BoardDTO {
 		List<String> tags = board.getTags() != null ? board.getTags() : new ArrayList<>();
 		
 		List<B_commentsDTO> comments = board.getBoardCommentsList() != null ? board.getBoardCommentsList().stream()
-		        .map(comment -> B_commentsDTO.builder()
-		        	.commentId(comment.getBComId())	
-		            .commentContent(comment.getBComContent())
-		            .commentDate(comment.getBComDate())
-		            .memberName(comment.getMember().getName())
-		            .memberEmail(comment.getMember().getEmail())
-		            .memberProfile(frontFilePath + comment.getMember().getMProfile().getMStoredFileName())
-		            .build())
+		        .map(comment -> {
+		        	
+		            Member commentMember = comment.getMember();
+		            String fileUrl;
+		            if(commentMember.getMProfile().getMStoredFileName().contains("https://lh3.googleusercontent.com")) {
+		                fileUrl = commentMember.getMProfile().getMStoredFileName();
+		            } else {
+		                fileUrl = frontFilePath + commentMember.getMProfile().getMStoredFileName();
+		            }
+		        	
+		            return B_commentsDTO.builder()
+		                    .commentId(comment.getBComId())
+		                    .commentContent(comment.getBComContent())
+		                    .commentDate(comment.getBComDate())
+		                    .memberName(commentMember.getName())
+		                    .memberEmail(commentMember.getEmail())
+		                    .memberProfile(fileUrl)
+		                    .build();
+		        })
 		        .collect(Collectors.toList()) : new ArrayList<>();
+		
+		// 정상코드
+//		List<B_commentsDTO> comments = board.getBoardCommentsList() != null ? board.getBoardCommentsList().stream()
+//		        .map(comment -> B_commentsDTO.builder()
+//		        	.commentId(comment.getBComId())	
+//		            .commentContent(comment.getBComContent())
+//		            .commentDate(comment.getBComDate())
+//		            .memberName(comment.getMember().getName())
+//		            .memberEmail(comment.getMember().getEmail())
+//		            .memberProfile(frontFilePath + comment.getMember().getMProfile().getMStoredFileName())
+//		            .build())
+//		        .collect(Collectors.toList()) : new ArrayList<>();
 		String bFileUrl = "";
 	    String bCoverFileUrl = "";
 

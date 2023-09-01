@@ -183,9 +183,8 @@ public class CommunityServiceImpl implements CommunityService {
 		List<C_comments> comments =  cCommRepo.findAllByCommunity_CommunityId(communityId);
 		
 		return comments.stream()
-				.map(C_commentsDTO::toDTO)
+				.map(comment -> C_commentsDTO.toDTO(comment, frontFilePath))
 				.collect(Collectors.toList());
-
 	}
 
 	// 좋아요 확인

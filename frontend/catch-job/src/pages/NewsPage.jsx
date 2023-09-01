@@ -22,8 +22,10 @@ function NewsPage() {
 
   const fetchData = async () => {
     try {
-      const ID_KEY = "Nr8FKE9N4Eqe8gY5XxvD";
-      const SECRET_KEY = "Q7YFNvGmGv";
+      const ID_KEY = "SjdmQwORYjXNJ5U5iLor";
+      // const ID_KEY = "Nr8FKE9N4Eqe8gY5XxvD";
+      const SECRET_KEY = "vFq0fB_Zlt";
+      // const SECRET_KEY = "Q7YFNvGmGv";
       const response = await axios.get(`/api/v1/search/news.json?query=${searchWord.trim()}&display=100&sort=sim`, {
         headers: {
           "X-Naver-Client-Id": ID_KEY,
@@ -33,12 +35,14 @@ function NewsPage() {
 
       console.log(response.data);
       setData(response.data);
-      dispatch(stopLoading);
+      dispatch(stopLoading());
     } catch (e) {
       console.log(e);
-      dispatch(stopLoading);
+      dispatch(stopLoading());
     } finally {
-      dispatch(stopLoading);
+      console.log(`===========` + data.items);
+      
+      dispatch(stopLoading());
     }
   };
 
@@ -87,7 +91,7 @@ function NewsPage() {
       return filteredNews;
     }, []);
   };
-  const uniqueNewsList = removeDuplicateNews(data.items);
+  const uniqueNewsList = removeDuplicateNews(data.items || []);
 
   return (
     <>

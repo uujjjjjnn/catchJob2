@@ -11,6 +11,7 @@ const GoogleLoginButton = () => {
     onSuccess: (codeResponse) => {
       console.log("-----------", codeResponse.code);
       axios
+        // .post("http://ec2-43-202-98-45.ap-northeast-2.compute.amazonaws.com:8089/googlelogin", null, {
         .post("http://43.202.98.45:8089/googlelogin", null, {
           params: {
             code: codeResponse.code,
@@ -24,7 +25,7 @@ const GoogleLoginButton = () => {
           localStorage.setItem('email', response.data.email);
           localStorage.setItem('name', response.data.name);
           localStorage.setItem('profileImg',response.data.mOriginalFileName);
-          console.log("aaa --------------------", token);
+          console.log("aaa ——————————", token);
           console.log("JWT 토큰이 저장되었습니다.");
           console.log(localStorage.getItem("token"))
           console.log(localStorage.getItem("email"))
@@ -37,7 +38,7 @@ const GoogleLoginButton = () => {
             navigate("/");
             window.location.reload();
           }
-       
+      
         })
         .catch((error) => {
           console.error(error);
