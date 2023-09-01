@@ -18,7 +18,7 @@ const SocialSigninPage = () => {
 
         <div className="hi-text">반가워요 👋</div>
 
-        <GoogleOAuthProvider clientId="226990065119-dh4qnntmuprddppr3hoi6umt9k99vkvb.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="349939229334-dlcph9tdiofv8g5blcq30l6qpms8r3te.apps.googleusercontent.com">
             <GoogleLoginButton_long />
           </GoogleOAuthProvider>
 

@@ -15,6 +15,7 @@ build/
 .sts4-cache
 
 application-oauth.properties
+application-naver.properties
 keystore.p12
 
 bin/
