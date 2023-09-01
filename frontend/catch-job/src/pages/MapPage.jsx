@@ -8,6 +8,8 @@ import nowMarker from "../assets/img/nowMarker.png";
 import destination from "../assets/img/dest.png";
 import axios from "axios";
 
+const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
 
 const containerStyle = {
     width: '800px',
@@ -19,6 +21,19 @@ const center = {
 };
 
 const MapPage = () => {
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async function (position) {
+      const currentLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      setUserPosition(currentLocation);
+  
+      const nearbyCafes = await searchCafesNearby(currentLocation);
+      setCafes(nearbyCafes);
+    });
+  }, []);
 
     const [searchWord, setSearchWord] = useState("");
     const [userPosition, setUserPosition] = useState({
@@ -88,21 +103,8 @@ const MapPage = () => {
     
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyDyCBaHuD_xiJCzf_EH1Q_0R5WRaiA0LiM"
+        googleMapsApiKey: googleMapsApiKey
         })
-
-        useEffect(() => {
-            navigator.geolocation.getCurrentPosition(async function (position) {
-              const currentLocation = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-              };
-              setUserPosition(currentLocation);
-          
-              const nearbyCafes = await searchCafesNearby(currentLocation);
-              setCafes(nearbyCafes);
-            });
-          }, []);
         
         const onLoad = React.useCallback(function callback(map) {
         new window.google.maps.LatLngBounds(center);
@@ -183,7 +185,7 @@ const MapPage = () => {
         };
         
 
-        return isLoaded && userPosition.lat && userPosition.lng ? (
+        return isLoaded  ? (
             <div className={`${styles.wrapper}`}>
                 <div className={`${styles.mapList}`}>
                     <div className={`${styles.searchBox}`}>
@@ -211,7 +213,7 @@ const MapPage = () => {
                 <div className={`${styles.container}`}>
                     <GoogleMap
                     mapContainerStyle={containerStyle}
-                    center={userPosition}
+                    center={userPosition.lat !== null ? userPosition : center}
                     zoom={17}
                     onLoad={onLoad}
                     onIdle={handleMapIdle}
@@ -221,6 +223,6 @@ const MapPage = () => {
                     </GoogleMap>
                 </div>
             </div>
-        ) : <></>
+        ) : <div>Loding...</div>
     }
 export default MapPage;
