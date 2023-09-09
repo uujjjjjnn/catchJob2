@@ -47,4 +47,4 @@
 
 ## 프로젝트 실행
 
-프로젝트를 실행하려면 다음 주소를 방문하세요: [catchJob 홈페이지]([http://ec2-43-202-98-45.ap-northeast-2.compute.amazonaws.com:8090/])
+프로젝트를 실행하려면 다음 주소를 방문하세요: [catchJob 홈페이지](http://ec2-43-202-98-45.ap-northeast-2.compute.amazonaws.com:8090/)
