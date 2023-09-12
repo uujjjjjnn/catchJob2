@@ -408,8 +408,15 @@ const StudyDetailPage = () => {
                   </div>
                   <div className={styles.commentsWrapper}>
                     <div className={styles.registerComment}>
-                      <div className={styles.registerCommentProfileImg}>
+                      {/* <div className={styles.registerCommentProfileImg}>
                         <img src={localStorage.getItem("profileImg")} alt="프로필사진" />
+                      </div> */}
+                      <div className={styles.registerCommentProfileImg}>
+                        {localStorage.getItem("profileImg") ? (
+                          <img src={localStorage.getItem("profileImg")} alt="프로필사진" />
+                        ) : (
+                          <img src="http://43.202.98.45:8089/upload/profile.png" alt="프로필사진" />
+                        )}
                       </div>
                       <div className={styles.comment}>
                         <textarea
