@@ -12,15 +12,20 @@ function NewsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchData().then(() => dispatch(stopLoading()));
+    const loadInitialData = async () => {
+      await fetchData("it"); // 기본 검색어 설정
+      dispatch(stopLoading());
+    };
+  
+    loadInitialData();
     setSearchWord("");
   }, [dispatch]);
 
   const handleSearch = (e) => {
     setSearchWord(e.target.value);
   };
-
-  const fetchData = async () => {
+  
+  const fetchData = useCallback(async (word) => { // word 파라미터 추가
     try {
       const ID_KEY = "SjdmQwORYjXNJ5U5iLor";
       // const ID_KEY = "Nr8FKE9N4Eqe8gY5XxvD";
@@ -47,7 +52,7 @@ function NewsPage() {
   };
 
   const onClick = async () => {
-    fetchData();
+    fetchData(searchWord); // searchWord 전달
   };
 
   const handleEnter = (e) => {
