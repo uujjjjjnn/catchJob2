@@ -13,7 +13,7 @@ function NewsPage() {
 
   useEffect(() => {
     const loadInitialData = async () => {
-      await fetchData();
+      await fetchData("it"); // 기본 검색어 설정
       dispatch(stopLoading());
     };
   
@@ -26,7 +26,7 @@ function NewsPage() {
     setSearchWord(e.target.value);
   };
   
-  const fetchData = useCallback(async () => {
+  const fetchData = useCallback(async (word) => { // word 파라미터 추가
     try {
       const response = await axios.get(`http://43.202.98.45:8089/news?searchWord=${searchWord.trim()}`);
       setData(response.data);
@@ -43,7 +43,7 @@ function NewsPage() {
   
 
   const onClick = async () => {
-    fetchData();
+    fetchData(searchWord); // searchWord 전달
   };
 
   const handleEnter = (e) => {
