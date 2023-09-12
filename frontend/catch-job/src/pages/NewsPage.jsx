@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import he from "he";
 import axios from "axios";
 import styles from "../assets/css/NewsPage.module.css";
@@ -20,6 +20,7 @@ function NewsPage() {
     loadInitialData();
     setSearchWord("");
   }, [dispatch]);
+  
 
   const handleSearch = (e) => {
     setSearchWord(e.target.value);
@@ -27,29 +28,19 @@ function NewsPage() {
   
   const fetchData = useCallback(async (word) => { // word 파라미터 추가
     try {
-      const ID_KEY = "SjdmQwORYjXNJ5U5iLor";
-      // const ID_KEY = "Nr8FKE9N4Eqe8gY5XxvD";
-      const SECRET_KEY = "vFq0fB_Zlt";
-      // const SECRET_KEY = "Q7YFNvGmGv";
-      const response = await axios.get(`/api/v1/search/news.json?query=${searchWord.trim()}&display=100&sort=sim`, {
-        headers: {
-          "X-Naver-Client-Id": ID_KEY,
-          "X-Naver-Client-Secret": SECRET_KEY,
-        },
-      });
-
-      console.log(response.data);
+      const response = await axios.get(`http://43.202.98.45:8089/news?searchWord=${searchWord.trim()}`);
       setData(response.data);
       dispatch(stopLoading());
     } catch (e) {
       console.log(e);
       dispatch(stopLoading());
-    } finally {
-      console.log(`===========` + data.items);
-      
+    } finally {   
       dispatch(stopLoading());
     }
-  };
+  }, [searchWord, dispatch]);
+  
+  
+  
 
   const onClick = async () => {
     fetchData(searchWord); // searchWord 전달
