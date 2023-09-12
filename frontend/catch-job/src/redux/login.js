@@ -23,6 +23,7 @@ export const loginSlice = createSlice({
       state.name = null;
       state.token = null;
       state.email = null;
+      state.profileImg = null
       state.isLoggedIn = false;
       // state.userLoggedOut = true;
     },

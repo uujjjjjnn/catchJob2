@@ -40,6 +40,7 @@ const Header = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("name");
     localStorage.removeItem("email");
+    localStorage.removeItem("profileImg");
     dispatch(logOut());
     <Navigate to="/" />;
   };
@@ -92,6 +93,11 @@ const Header = () => {
               name="search"
               value={searchWord}
               onChange={(e) => setSearchWord(e.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  handleSearch();
+                }
+              }}
             />
             {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
             {/* <Link to={`/search?w=${searchWord}`}> */}
