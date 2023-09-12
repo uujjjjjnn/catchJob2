@@ -14,7 +14,6 @@ build/
 .springBeans
 .sts4-cache
 
-application-naver.properties
 application-oauth.properties
 application-naver.properties
 keystore.p12
