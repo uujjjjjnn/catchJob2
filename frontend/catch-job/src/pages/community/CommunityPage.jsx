@@ -248,7 +248,8 @@ function Card(props) {
                 </div>
 
                 <span className="ment" onClick={() => toggleCommentModal(i)}>
-                  {showComments[i] ? "댓글 닫기" : "댓글"}
+                  {showComments[i] ? "댓글 닫기" : `댓글 ${post.cComment}`}
+                  {/* {showComments[i] ? "댓글 닫기" : "댓글"} */}
                 </span>
               </div>
               {commentModalOpen[i] && (
